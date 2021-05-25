@@ -19,6 +19,10 @@ header {
   padding-left: 30px;
 }
 
+a .header_img {
+  width: 225px;
+}
+
 a {
   text-decoration: none;
   color: #595959;
@@ -58,33 +62,34 @@ main {
   flex-direction: column;
   margin: auto;
   background-color: #e6e6e6;
-  padding: 50px 30px;
+  padding: 50px 30px 0 30px;
 }
 
 .cards-top {
   display: flex;
-  margin-bottom: 50px;
+  flex-flow: row wrap;
   justify-content: space-around;
 }
 
-.cards-bottom {
-  display: flex;
-  justify-content: center;
+a article {
+  height: auto;
 }
 
-a .cards_link:hover {
+a article:hover {
   opacity: 0.9;
   box-shadow: 0 3px 10px gray;
   border-radius: 10px;
   transition: all 500ms ease-in-out;
+  height: auto;
 }
 
 .cards_img {
   width: 350px;
-  height: 410px;
+
   background-color: white;
   border-radius: 10px;
   box-shadow: 3px 3px 10px #ccc;
+  margin-bottom: 50px;
 }
 
 .cards_img figure {
@@ -225,9 +230,9 @@ p {
   main {
     padding: 50px 20px;
   }
+
   .cards_img {
-    width: 230px;
-    height: 395px;
+    width: 240px;
   }
 
   .cards_img figure {
@@ -239,8 +244,7 @@ p {
 
 @media all and (min-width: 993px) and (max-width: 1200px) {
   .cards_img {
-    width: 280px;
-    height: 380px;
+    width: 290px;
   }
 
   .cards_img figure {

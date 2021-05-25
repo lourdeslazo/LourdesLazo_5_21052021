@@ -40,12 +40,28 @@
         <p class="p-bold">Passer commande</p>
 
         <div>
-          <p>Nom</p>
-          <p>Prenom</p>
-          <p>Adresse</p>
-          <p>Ville</p>
+          <label for="lastname">Nom</label>
+          <input type="text" name="lastname" id="lastname" required />
         </div>
-        <button>Valider la commande</button>
+        <div>
+          <label for="firstname">Prenom</label>
+          <input type="text" name="firstname" id="firstname" required />
+        </div>
+        <div>
+          <label for="adress">Adresse</label>
+          <input type="text" name="adress" id="adress" required />
+        </div>
+        <div>
+          <label for="city">Ville</label>
+          <input type="text" name="city" id="city" required />
+        </div>
+        <div>
+          <label for="email">Adresse mail</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div>
+          <input type="button" value="Envoyer" />
+        </div>
       </div>
     </main>
 
@@ -53,6 +69,8 @@
       <div><a href="#">Mentions legales</a></div>
       <div class="footer_line">|</div>
       <div><a href="mailto:lourdes.lazo.s@gmail.com">Contact</a></div>
+
+      <script src="js/panier.js"></script>
     </footer>
   </body>
 </html>
