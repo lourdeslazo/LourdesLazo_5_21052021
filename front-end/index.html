@@ -17,58 +17,35 @@
 
   <body>
     <header>
-      <a href="index.html"> <img src="images/logo.png" class="header_img" /></a>
+      <a href="index.html"><img src="images/logo.png" class="header_img" /></a>
       <nav>
         <ul>
-          <li><a href="panier.html>">Panier</a></li>
+          <li><a href="panier.html">Panier</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <div class="cards-top">
-        <a class="cards_link" href="produit.html">
-          <div class="cards_img">
+    <main id="main">
+      <template id="templateArticle">
+        <a href="produit.html">
+          <article class="cards_img">
             <figure>
-              <img src="images/vcam_3.jpg" />
+              <img
+                src="http://localhost:3000/images/vcam_1.jpg"
+                id="imageUrl"
+              />
             </figure>
             <div class="cards_byline">
-              <p class="p-bold">Zurss 50S</p>
-              <div>49900E</div>
-              <p>
+              <p class="p-bold" id="name">Zurss 50S</p>
+              <p id="price">49900E</p>
+              <p id="description">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
-          </div>
+          </article>
         </a>
-
-        <div class="cards_img">
-          <figure>
-            <img src="http://localhost:3000/images/vcam_2.jpg" />
-          </figure>
-        </div>
-
-        <div class="cards_img">
-          <figure>
-            <img src="http://localhost:3000/images/vcam_3.jpg" />
-          </figure>
-        </div>
-      </div>
-
-      <div class="cards-bottom">
-        <div class="cards_img" id="card">
-          <figure>
-            <img src="http://localhost:3000/images/vcam_4.jpg" />
-          </figure>
-        </div>
-
-        <div class="cards_img">
-          <figure>
-            <img src="http://localhost:3000/images/vcam_5.jpg" />
-          </figure>
-        </div>
-      </div>
+      </template>
     </main>
 
     <footer>
@@ -76,5 +53,7 @@
       <div class="footer_line">|</div>
       <div><a href="mailto:lourdes.lazo.s@gmail.com">Contact</a></div>
     </footer>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
