@@ -17,10 +17,10 @@
 
   <body>
     <header>
-      <a href="index.html"> <img src="images/logo.png" class="header_img" /></a>
+      <a href="index.html"><img src="images/logo.png" class="header_img" /></a>
       <nav>
         <ul>
-          <li><a href="panier.html>">Panier</a></li>
+          <li><a href="panier.html">Panier</a></li>
         </ul>
       </nav>
     </header>
@@ -28,17 +28,17 @@
     <main>
       <div class="item">
         <div class="item_img">
-          <figure><img src="images/vcam_3.jpg" /></figure>
+          <figure><img src="images/vcam_3.jpg" id="articleImage" /></figure>
         </div>
         <div class="item_info">
-          <p class="p-bold">Zurss 50S</p>
-          <p>
+          <p class="p-bold" id="articleName">Zurss 50S</p>
+          <p id="articleDescription">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <p>Prix</p>
+          <p id="articlePrice">Prix</p>
           <p>Choix</p>
-          <button>Ajouter au panier</button>
+          <button id="addToCart">Ajouter au panier</button>
         </div>
       </div>
     </main>
@@ -48,5 +48,8 @@
       <div class="footer_line">|</div>
       <div><a href="mailto:lourdes.lazo.s@gmail.com">Contact</a></div>
     </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/product.js"></script>
   </body>
 </html>
