@@ -34,7 +34,8 @@ function displayArticle(article){
     cloneElt.getElementById("imageUrl").src = article.imageUrl
     cloneElt.getElementById('articleLink').href = `product.html?id=${article._id}`
 
-    //Affiche le template
+    //Affiche lelement enfant clone
+    
     document.getElementById("main").appendChild(cloneElt)
 
 }

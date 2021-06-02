@@ -20,13 +20,13 @@
       <a href="index.html"> <img src="images/logo.png" class="header_img" /></a>
       <nav>
         <ul>
-          <li><a href="panier.html">Panier</a></li>
+          <li><a href="index.html">Produits</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <div class="panier">
+      <div id="cartContent" class="panier">
         <p class="p-bold">Votre panier</p>
         <div class="panier_info">
           <p>Produits</p>
@@ -39,29 +39,31 @@
       <div class="commande">
         <p class="p-bold">Passer commande</p>
 
-        <div>
-          <label for="lastname">Nom</label>
-          <input type="text" name="lastname" id="lastname" required />
-        </div>
-        <div>
-          <label for="firstname">Prenom</label>
-          <input type="text" name="firstname" id="firstname" required />
-        </div>
-        <div>
-          <label for="adress">Adresse</label>
-          <input type="text" name="adress" id="adress" required />
-        </div>
-        <div>
-          <label for="city">Ville</label>
-          <input type="text" name="city" id="city" required />
-        </div>
-        <div>
-          <label for="email">Adresse mail</label>
-          <input type="email" name="email" id="email" required />
-        </div>
-        <div>
-          <input type="button" value="Envoyer" />
-        </div>
+        <form class="form">
+          <div>
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" required />
+          </div>
+          <div>
+            <label for="firstname">Prenom</label>
+            <input type="text" name="firstname" id="firstname" required />
+          </div>
+          <div>
+            <label for="adress">Adresse</label>
+            <input type="text" name="adress" id="adress" required />
+          </div>
+          <div>
+            <label for="city">Ville</label>
+            <input type="text" name="city" id="city" required />
+          </div>
+          <div>
+            <label for="email">Adresse mail</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div>
+            <input type="button" value="Envoyer" />
+          </div>
+        </form>
       </div>
     </main>
 
@@ -70,7 +72,9 @@
       <div class="footer_line">|</div>
       <div><a href="mailto:lourdes.lazo.s@gmail.com">Contact</a></div>
 
-      <script src="js/panier.js"></script>
+      <script src="js/config.js"></script>
+      <script src="js/class/lenses.js"></script>
+      <script src="js/cart.js"></script>
     </footer>
   </body>
 </html>

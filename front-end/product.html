@@ -17,10 +17,12 @@
 
   <body>
     <header>
-      <a href="index.html"><img src="images/logo.png" class="header_img" /></a>
+      <a href="index.html"
+        ><img src="images/logo.png" class="header_img" alt="Logo Orinoco"
+      /></a>
       <nav>
         <ul>
-          <li><a href="panier.html">Panier</a></li>
+          <li><a href="cart.html">Panier</a></li>
         </ul>
       </nav>
     </header>
@@ -28,7 +30,9 @@
     <main>
       <div class="item">
         <div class="item_img">
-          <figure><img src="images/vcam_3.jpg" id="articleImage" /></figure>
+          <figure>
+            <img src="images/vcam_3.jpg" id="articleImage" alt="camera" />
+          </figure>
         </div>
         <div class="item_info">
           <p class="p-bold" id="articleName">Zurss 50S</p>
@@ -37,7 +41,13 @@
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <p id="articlePrice">Prix</p>
-          <p>Choix</p>
+          <form>
+            <p>
+              <label for="lenses">Choississez le type de lentilles</label>
+              <select id="lenses" name="lenses"></select>
+            </p>
+          </form>
+
           <button id="addToCart">Ajouter au panier</button>
         </div>
       </div>
