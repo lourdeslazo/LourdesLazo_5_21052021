@@ -29,7 +29,7 @@ function displayArticle(article){
     const cloneElt = document.importNode(templateElt.content, true)
 
     cloneElt.getElementById("name").textContent = article.name
-    cloneElt.getElementById("price").textContent = article.price
+    cloneElt.getElementById("price").textContent = `${article.price / 100}.00 €`
     cloneElt.getElementById("description").textContent = article.description
     cloneElt.getElementById("imageUrl").src = article.imageUrl
     cloneElt.getElementById('articleLink').href = `product.html?id=${article._id}`
