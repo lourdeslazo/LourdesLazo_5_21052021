@@ -1,73 +1,73 @@
-// affiche les produits
-
 let params = (new URL(document.location)).searchParams;
 let id = params.get("id");
 
-function articles(article) {
+function showArticles(article) {
     document.getElementById('articleImage').src = article.imageUrl
     document.getElementById('articleName').textContent = article.name
     document.getElementById('articleDescription').textContent = article.description
     document.getElementById('articlePrice').textContent = `${article.price / 100}.00 €`
+    choiceLenses = document.querySelector("select");
+
+    for (i = 0; i < article.lenses.length; i++) {
+      let option = document.createElement("option");
+      option.textContent = article.lenses[i];
+      choiceLenses.appendChild(option);
+    }
 }
 
-//gere appel a lapi 
 
-function getArticles(id) {
-    fetch(apiUrl + "/api/cameras/" + id)
+
+function getArticle(id) {
+    fetch("http://localhost:3000/api/cameras/" + id)
       .then(response => response.json())
       .then(article => {
-        articles(article);
+        showArticles(article);
         
+        // Ecouter les clics sur le bouton addToBasket
+      let addItemToCart = document.querySelector("#addToCart");
+      addItemToCart.addEventListener("click", function () {
+        
+        addToCart(article);
+        alert("Produit ajouté au panier");
+      
+      });
     })
     .catch(function() {
         console.log('Erreur de chargement');
     });
   }
 
-getArticles(id);
-
-//gere le menu deroulant
-
-let camLenses;
-const lenses = document.getElementById('lenses');
-
-fetch(apiUrl + "/api/cameras/" + id)
-.then(async result_ => {
-    const result = await result_.json()
-    camLenses = result
-    lensesList()
-
-})
-.catch((error) => {
-    console.log(error);
-})
-
-const lensesList = () => {
-    for (let i = 0; i < camLenses.lenses.length; i++) {
-        const option = document.createElement("option")
-        option.setAttribute("value", camLenses.lenses[i])              
-        option.innerHTML = camLenses.lenses[i]
-        lenses.appendChild(option)
+  function addToCart(article) {
+    
+    //Création du panier dans le localStorage s'il n'existe pas déjà
+    if (typeof localStorage.getItem("cart") !== "string") {
+      let cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
-}
-
-//Gere le bouton ajouter au panier
-function addToCart(lenseSelected){
-    let cartContent = JSON.parse(localStorage.getItem("cartContent"));
-    if(cartContent === null) {
-        cartContent = [];
+    //Récupérer les informations de la caméra
+    article.chosenLense = document.querySelector("option:checked").innerText;
+    delete article.lenses;
+    //création d'une variable pour manipuler le panier
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    //Vérification que l'item n'existe pas déjà dans le panier
+    let isThisItemExist = false;
+    let existingItem;
+    for (let i = 0; i < cart.length; i++) {
+      if (article._id === cart[i]._id && article.price === cart[i].price && article.chosenLense === cart[i].chosenLense) {
+        isThisItemExist = true;
+        existingItem = cart[i];
+      }
     }
+    //Ajouter la caméra au panier
+    if (isThisItemExist === false) {
+      cart.push(article);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+     
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    
+  }
+  
 
-    let lense = new Lense(id, lenseSelected);
-
-    cartContent.push(lense);
-    localStorage.setItem("cartContent", JSON.stringify(cartContent));
-}
-
-btn.addEventListener("click", function(){
-    const lenses = getElementByTagName("select");
-    const lenseSelected = lenses[0].value;
-
-    addToCart(lenseSelected);
-    alert("ajoute au panier");
-});
+getArticle(id);

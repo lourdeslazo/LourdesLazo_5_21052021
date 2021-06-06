@@ -1,10 +1,11 @@
 //gere les produits ajoutes
 
-get("http://localhost:3000/api/cameras")
-.then(function(response) {
-    const cartContent = JSON.parse(localStorage.getItem("cartContent"));
 
-})
+
+    const cartContent = JSON.parse(localStorage.getItem("cartContent"));
+    console.log(cartContent);
+
+
 
 //gere "passer la commande"
 
