@@ -233,6 +233,21 @@ p {
   border-radius: 10px;
   background-color: white;
   padding: 20px;
+  margin-bottom: 50px;
+}
+
+.space-right {
+  margin-right: 60px;
+}
+
+.space-bottom {
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 
 /*Page Confirmation*/
