@@ -67,17 +67,114 @@ cartContent.innerHTML += `
     </div>`;
 
 
+    
 //gere "passer la commande"
+  
+function fieldValid(input, regExp) {
+    return input.value.match(regExp) !== null;
+  }
 
-document.querySelector('.form input[type="button"]').addEventListener("click", function(){
-    var valid = true;
-    for(let input of document.querySelectorAll(".form input")){
-        valid &= input.reportValidity();
-        if(!valid){
-            break;
+  let articlesID = [];
+
+  function reStart(){
+
+    //Si la fonction a déjà été utilisée on réinitialise le formulaire
+    //suppr div
+    //suppr is-valid/is-invalid
+    let inputs = document.querySelectorAll("input");
+    for (let i = 0; i < inputs.length ; i++) {
+      inputs[i].classList.remove("is-invalid");
+      inputs[i].classList.remove("is-valid");
+  
+    }
+  
+    let alertMessages = document.querySelectorAll(".alertMessages");
+    for (let i = 0; i < alertMessages.length ; i++) {
+      alertMessages[i].remove();
+    };
+  
+    //Récupérer les informations du formulaire
+
+    var firstname = document.querySelector("#firstname"),
+      lastname = document.querySelector("#lastname"),
+      address = document.querySelector("#address"),
+      city = document.querySelector("#city"),
+      email = document.querySelector("#email");
+
+    //Définition des expressions régulières pour la vérification de la validité des champs
+    let stringRegExp = /([A-Za-z0-9_\s\-'\u00C0-\u024F]+)/;
+    emailRegExp = /^([\w\-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i;
+  
+    //Vérification de la validité des champs
+    let firstnameValid = fieldValid(firstname, stringRegExp);
+      lastnameValid = fieldValid(lastname, stringRegExp);
+    addressValid = fieldValid(address, stringRegExp);
+    cityValid = fieldValid(city, stringRegExp);
+    emailValid = fieldValid(email, emailRegExp);
+  
+    //Alerter l'utilisateur s'il a mal rempli le formulaire
+  let fields = [firstname, lastname, address, city, email],
+      fieldsValidity = [firstnameValid, lastnameValid, addressValid, cityValid, emailValid],
+      fieldInvalid = false;
+  
+    for (let i = 0; i < fields.length; i++) {
+      if (!fieldsValidity[i]) { //si un champ n'est pas valide
+        fieldInvalid = true; //un champ au moins est incorrect, sera utilisé plus loin pour empêcher la requête POST à l'API
+  
+        //Création du message à envoyer à l'utilisateur
+        let message;
+        if (fields[i] === document.querySelector("#firstname")) {
+          message = "Le prénom est incorrect !";
+        } else if (fields[i] === document.querySelector("#lastname")) {
+          message = "Le nom est incorrect !";
+        } else if (fields[i] === document.querySelector("#address")) {
+          message = "L'adresse postale est incorrecte !";
+        } else if (fields[i] === document.querySelector("#city")) {
+          message = "La ville est incorrecte !";
+        } else if (fields[i] === document.querySelector("#email")) {
+            message = "Lemail est incorrecte !";
         }
+  
+        //Création et stylisation de l'alerte
+        let alert = document.createElement("div");
+        alert.appendChild(document.createTextNode(message));
+        fields[i].classList.add("is-invalid");
+        alert.classList.add("alertMessages", "invalid-feedback");
+        fields[i].parentElement.appendChild(alert);
+  
+      } else {
+        fields[i].classList.add("is-valid");
+      }
     }
-    if(valid){
-        alert("votre message a bien ete envoye!");
+    //Si l'un des champs a été vidé ...
+    if (fieldInvalid) return; //la fonction s'arrête 
+    //sinon on continue
+
+      let contact = {
+        firstname: firstname.value,
+        lastname: lastname.value,
+        address: address.value,
+        city: city.value,
+        email: email.value
+      },
+        articles = articlesID;
+
+      //Récupérer l'orderId
+      fetch('http://localhost:3000/api/cameras/order', {
+        method: 'post',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ //On convertit les données au format JSON
+          contact: contact,
+          articles: articles
+        })
+      })
+        .then(response => response.json())
+        .then(order => {
+          localStorage.setItem("orderId", order.orderId); //On definit orderID
+          window.location.href = "confirmation.html"; // On redirige
+        })
+        .catch(error => alert("Un des champ du formulaire n'est pas correct !"));
     }
-});
+
+  
+  document.querySelector("#payment").addEventListener("click", reStart, true);
