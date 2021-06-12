@@ -24,13 +24,12 @@ function getArticle(id) {
         showArticles(article);
         
         // Ecouter les clics sur le bouton addToBasket
-      let addItemToCart = document.querySelector("#addToCart");
-      addItemToCart.addEventListener("click", function () {
+        let addItemToCart = document.querySelector("#addToCart");
+        addItemToCart.addEventListener("click", function () {
         
-        addToCart(article);
-        alert("Produit ajouté au panier");
-      
-      });
+          addToCart(article);
+          alert("Produit ajouté au panier");
+        });
     })
     .catch(function() {
         console.log('Erreur de chargement');

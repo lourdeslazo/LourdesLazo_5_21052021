@@ -13,7 +13,7 @@ orderNo.textContent = "Numéro de commande : " + orderId;
 console.log('945');
 
 const totalOrder = document.getElementById('totalOrder');
-totalOrder.textContent = "Montant total de votre commande : " + totalPriceInCart + " €";
+totalOrder.textContent = "Montant total de votre commande : " + totalPriceInCart / 100 + ".00 €";
 console.log('912');
 
 localStorage.clear();
