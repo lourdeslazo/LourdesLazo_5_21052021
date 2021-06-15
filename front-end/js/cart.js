@@ -3,7 +3,6 @@
 let addToCart = JSON.parse(localStorage.getItem("cart"));
 
 const cartContent = document.querySelector("#itemsInCart");
-console.log(cartContent);
 
 let showCart = [];
 
@@ -46,15 +45,15 @@ if(addToCart === null || addToCart == 0 ) {
 
 let totalCart = [];
 
-for (let k = 0; k < addToCart.length; k++){
+for (let k in addToCart){
     let priceArticlesInCart = addToCart[k].price;
 
-    totalCart.push(priceArticlesInCart)
+    totalCart.push(priceArticlesInCart);
 }
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const totalPriceInCart = totalCart.reduce(reducer,0);
-console.log(totalPriceInCart);
+
 
 localStorage.setItem('totalPriceInCart', totalCart.reduce(reducer,0));
 
@@ -107,10 +106,10 @@ function restartForm(){
   emailRegExp = /^([\w\-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i;
 
   //Verification de la validite des champs
-  let isfirstNameValid = checkIfFieldIsValid(firstName, stringRegExp);
-    isLastNameValid = checkIfFieldIsValid(lastName, stringRegExp);
-  isAddressValid = checkIfFieldIsValid(address, stringRegExp);
-  isCityValid = checkIfFieldIsValid(city, stringRegExp);
+  let isfirstNameValid = checkIfFieldIsValid(firstName, stringRegExp),
+    isLastNameValid = checkIfFieldIsValid(lastName, stringRegExp),
+  isAddressValid = checkIfFieldIsValid(address, stringRegExp),
+  isCityValid = checkIfFieldIsValid(city, stringRegExp),
   isEmailValid = checkIfFieldIsValid(email, emailRegExp);
 
   //Alerter lutilisateur sil a mal rempli le formulaire
@@ -132,7 +131,7 @@ let fields = [firstName, lastName, address, city, email],
         message = "L'adresse postale est incorrecte !";
       } else if (fields[i] === document.querySelector("#city")) {
         message = "La ville est incorrecte !";
-      } else if (fields[i] === document.querySelector("#city")) {
+      } else if (fields[i] === document.querySelector("#email")) {
         message = "L'adresse mail est incorrecte !";
       }
 
@@ -172,7 +171,8 @@ let fields = [firstName, lastName, address, city, email],
         localStorage.setItem("orderId", order.orderId); //Definie orderID
         window.location.href = "confirmation.html"; 
       })
-      .catch(error);
+      .catch(function(err) {
+      });
   }
 
 

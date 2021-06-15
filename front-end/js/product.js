@@ -32,7 +32,6 @@ function getArticle(id) {
         });
     })
     .catch(function() {
-        console.log('Erreur de chargement');
     });
   }
 
@@ -58,13 +57,12 @@ function getArticle(id) {
       }
     }
     //Ajouter la caméra au panier
-    if (isThisItemExist === false) {
+    if (!isThisItemExist) {
       cart.push(article);
-      localStorage.setItem("cart", JSON.stringify(cart));
-    } else {
+      
+    } 
      
       localStorage.setItem("cart", JSON.stringify(cart));
-    }
     
   }
   

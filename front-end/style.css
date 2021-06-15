@@ -264,6 +264,10 @@ p {
   color: #d9832e;
 }
 
+.mg-btm {
+  margin-bottom: 50px;
+}
+
 /*Version Mobile*/
 
 @media all and (max-width: 768px) {
@@ -313,6 +317,16 @@ p {
 }
 
 /*Version Large devices*/
+
+@media (min-width: 768px) {
+  .footer-fix {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+  }
+}
 
 @media all and (min-width: 993px) and (max-width: 1200px) {
   .cards_img {
