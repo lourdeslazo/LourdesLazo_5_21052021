@@ -1,12 +1,12 @@
-// recupere Id commande
+// Récupère l'Id de la commande
 
 let orderId = localStorage.getItem('orderId');
 
-//recupere le prix total de la commande
+// Récupère le prix total de la commande
 
 let totalPriceInCart = localStorage.getItem('totalPriceInCart');
 
-//recupere les information de la commande
+// Récupère les informations de la commande
 
 const orderNo = document.getElementById('orderNo');
 orderNo.textContent = "Numéro de commande : " + orderId;

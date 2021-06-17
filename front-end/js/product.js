@@ -1,6 +1,8 @@
+// Gère la page produits
 let params = (new URL(document.location)).searchParams;
 let id = params.get("id");
 
+// Affiche le produit selectioné 
 function showArticles(article) {
     document.getElementById('articleImage').src = article.imageUrl
     document.getElementById('articleName').textContent = article.name
@@ -16,14 +18,14 @@ function showArticles(article) {
 }
 
 
-
+// Appelle l'Api
 function getArticle(id) {
     fetch("http://localhost:3000/api/cameras/" + id)
       .then(response => response.json())
       .then(article => {
         showArticles(article);
         
-        // Ecouter les clics sur le bouton addToBasket
+        // Ecoute les clics sur le bouton addToCart
         let addItemToCart = document.querySelector("#addToCart");
         addItemToCart.addEventListener("click", function () {
         
@@ -35,6 +37,8 @@ function getArticle(id) {
     });
   }
 
+
+// Gère le panier
   function addToCart(article) {
     
     //Création du panier dans le localStorage s'il n'existe pas déjà
@@ -42,10 +46,10 @@ function getArticle(id) {
       let cart = [];
       localStorage.setItem("cart", JSON.stringify(cart));
     }
-    //Récupérer les informations de la caméra
+    //Récupère les informations du produit
     article.chosenLense = document.querySelector("option:checked").innerText;
     delete article.lenses;
-    //création d'une variable pour manipuler le panier
+    //Création d'une variable pour manipuler le panier
     let cart = JSON.parse(localStorage.getItem("cart"));
     //Vérification que l'item n'existe pas déjà dans le panier
     let isThisItemExist = false;
@@ -56,7 +60,7 @@ function getArticle(id) {
         existingItem = cart[i];
       }
     }
-    //Ajouter la caméra au panier
+    //Ajoute le produit dans le panier
     if (!isThisItemExist) {
       cart.push(article);
       

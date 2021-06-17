@@ -1,8 +1,8 @@
-//Fonction principale, gere le temps de telechargement
+//Fonction principale, gère le temps de telechargement
 (async function() {
     const articles = await getArticles()
 
-    //Cree la boucle des produits
+    //Crée la boucle des produits
     for (article of articles) {
         displayArticle(article)
     }
@@ -19,7 +19,7 @@ async function getArticles(){
     }
 }
 
-//Gere laffichage des produits
+//Gère l'affichage des produits
 
 function displayArticle(article){
     //Appelle le temmplate
@@ -34,7 +34,7 @@ function displayArticle(article){
     cloneElt.getElementById("imageUrl").src = article.imageUrl
     cloneElt.getElementById('articleLink').href = `product.html?id=${article._id}`
 
-    //Affiche lelement enfant clone
+    //Affiche l'element enfant clone
     
     document.getElementById("main").appendChild(cloneElt)
 
