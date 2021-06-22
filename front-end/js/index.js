@@ -1,4 +1,4 @@
-//Fonction principale, gère le temps de telechargement
+//Fonction principale, gère le temps de téléchargement
 (async function() {
     const articles = await getArticles()
 
@@ -10,11 +10,12 @@
 
 async function getArticles(){
     try {
-        //Appelle la reponse de l'api
+        //Appelle l'Api
         const httpBodyResponse = await fetch("http://localhost:3000/api/cameras")
         const articles = await httpBodyResponse.json()
         return articles
-    } catch (error) {
+    } 
+    catch (error) {
         alert(error)
     }
 }
@@ -34,9 +35,8 @@ function displayArticle(article){
     cloneElt.getElementById("imageUrl").src = article.imageUrl
     cloneElt.getElementById('articleLink').href = `product.html?id=${article._id}`
 
-    //Affiche l'element enfant clone
+    //Crée l'élément enfant "clone"
     
     document.getElementById("main").appendChild(cloneElt)
-
 }
 
